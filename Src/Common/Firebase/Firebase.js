@@ -8,8 +8,7 @@
 
 import { initializeApp } from 'firebase/app';
 
-const firebaseConfig = {
-};
+const firebaseConfig = null; // add config here!
 
 var FirebaseApp = null;
 
@@ -18,9 +17,12 @@ export function GetFirebaseApp() {
     return FirebaseApp;
 }
 
-export function FirebaseInit() {
+export function FirebaseInit() {    
     if (FirebaseApp)
         return;
+
+    if (firebaseConfig === null)
+        throw 'You should update the firebaseConfig to the file: Src\Common\Firebase\Firebase.js first!';
 
     FirebaseApp = initializeApp(firebaseConfig);
 }
